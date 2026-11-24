@@ -1,0 +1,20 @@
+{
+  "name": "handyman24",
+  "main": "worker.js",
+  "compatibility_date": "2025-10-01",
+  // SITE_URL = the site address used in canonicals, hreflang, sitemap, robots and schema (src/build.py reads it).
+  // REDIRECT "on" sends any other hostname (workers.dev, www) to SITE_URL with a 301. Keep it "off" until the domain is attached.
+  "vars": { "SITE_URL": "https://handyman24.com", "REDIRECT": "off" },
+  "assets": {
+    "directory": "./site",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": true
+  },
+  // Quote form leads (worker.js). Needs Cloudflare Email Routing on handyman24.com.
+  // Set LEAD_TO (the owner's inbox) as a variable in the Cloudflare dashboard and verify it as a destination in Email Routing.
+  "send_email": [
+    { "name": "LEAD" }
+  ]
+}
